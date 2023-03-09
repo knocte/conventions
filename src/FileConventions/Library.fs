@@ -72,3 +72,7 @@ let DetectMissingVersionsInNugetPackageReferences(fileInfo: FileInfo) =
         |> Seq.filter(fun line -> not(line.Contains ","))
         |> Seq.isEmpty
     )
+
+let DetectInconsistentVersionsInGitHubCI(fileInfo: FileInfo) =
+    assert (fileInfo.FullName.EndsWith ".yml")
+    false
