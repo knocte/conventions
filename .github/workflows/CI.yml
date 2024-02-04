@@ -92,7 +92,7 @@ jobs:
           npm --version
       - name: Install commitlint
         run: |
-          npm install @commitlint/{cli,config-conventional}
+          npm install --global @commitlint/{cli,config-conventional}
       - name: Install yarn
         run: |
           npm install --global yarn
