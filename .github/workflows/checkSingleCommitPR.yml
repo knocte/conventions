@@ -4,6 +4,7 @@ on:
   pull_request:
     types:
       - opened
+      - edited
 
 env:
   DOTNET_VERSION: "10.0"
@@ -30,6 +31,10 @@ jobs:
           apt update
           apt install --yes sudo
           sudo apt install --yes --no-install-recommends git
+      - name: Run git+githubCI workaround
+        run: |
+          # workaround for https://github.com/actions/runner/issues/2033
+          git config --global --add safe.directory '*'
       - name: Setup .NET
         run: |
           apt install --yes --no-install-recommends ca-certificates
