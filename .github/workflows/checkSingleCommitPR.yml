@@ -11,6 +11,9 @@ env:
   DOTNET_ROLL_FORWARD: Major
   CHECKOUT_ACTION_VERSION: "4"
 
+  # workaround for possible error "Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set)."
+  GIT_DISCOVERY_ACROSS_FILESYSTEM: 1
+
 jobs:
   check-single-commit-pr:
     name: Check that single-commit PR matches commit message
