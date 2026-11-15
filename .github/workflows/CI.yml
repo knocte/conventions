@@ -282,14 +282,14 @@ jobs:
         run: pnpm install
       - name: Run "prettier" to check the style of our TypeScript and YML code
         run: |
-          npm run format
+          pnpm format
           # Since we changed file modes in the previous step we need the following command to
           # make git ignore mode changes in files and doesn't include them in the git diff command.
           git config core.fileMode false
           # Since after installing commitlint dependencies package.json file changes, we need to 
           # run the following command to ignore package.json file
           git restore package.json
-          git diff --exit-code || (echo "Formatting did not match (see above diff), please run 'npm run format'" >&2 && exit 1)
+          git diff --exit-code || (echo "Formatting did not match (see above diff), please run 'pnpm format'" >&2 && exit 1)
       - name: Validate current commit (last commit) with commitlint
         if: github.event_name == 'push'
         run: ./commitlint.sh --last --verbose
